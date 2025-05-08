@@ -1,0 +1,4 @@
+config.json
+/.vite
+/dbDir
+/node_modules

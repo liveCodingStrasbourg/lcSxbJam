@@ -1,0 +1,7 @@
+{
+    "HOST_IP": "192.168.0.0", 
+    "FOXDOT_PATH": "/home/yourName/foxdot/path/FoxDot",
+    "sample_path": "/home/yourName/samples/UltimateSamples/",
+    "FOXDOT_WS_PORT": 20000,
+    "SC_CPU_PORT": 2887
+}
