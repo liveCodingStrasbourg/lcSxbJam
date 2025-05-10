@@ -29,7 +29,9 @@ import { logsUtils } from './logs.js';
 import { functionUtils } from './functionUtils.js';
 import { markerUtils } from './markerUtils.js';
 import { foxdotAutocomplete } from './foxdotAutocomplete.js';
+import { hydraAutocomplete } from './hydraAutocomplete.js';
 import { showDefinition } from './foxdotDefinitions.js';
+import { showHydraDefinition } from './hydraDefinition.js';
 import { hydraUtils } from './hydraUtils.js';
 
 import 'codemirror/lib/codemirror.css'
@@ -57,15 +59,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   const chrono = document.getElementById('chrono');
   
 
-  let hydra = localStorage.getItem('hydraEnabled') === 'true';
+  let hydra = localStorage.getItem('lcsxbjam-hydraEnabled') === 'true';
   const hydraSwitch = document.getElementById('hydraSwitch');
-  // const hydraStatusLabel = document.getElementById('hydraStatusLabel');
+  const languageLabel = document.getElementById('language');
+  const separator = document.getElementById('separator');
   hydraSwitch.checked = hydra;
-  // hydraStatusLabel.textContent = hydra ? 'ON' : 'OFF';
-
+  languageLabel.textContent = hydra ? 'Hydra' : 'FoxDot';
+  separator.style.background = hydra ? 'aqua' : 'red';
+  
   hydraSwitch.addEventListener('change', (event) => {
     hydra = event.currentTarget.checked;
-    localStorage.setItem('hydraEnabled', hydra);
+    localStorage.setItem('lcsxbjam-hydraEnabled', hydra);
+    separator.style.background = hydra ? 'aqua' : 'red';
+    languageLabel.textContent = hydra ? 'Hydra' : 'FoxDot';
   })
 
 
@@ -199,9 +205,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       const message = item.content.getContent()[0];
       chatUtils.insertChatMessage(editor, message.text, message.userName, message.userColor, message.line);
     });
-    // Supprimer les anciens messages pour ne garder que les 20 plus récents
-    if (ychat.length > 15) {
-      ychat.delete(0, ychat.length - 15);
+    // Supprimer les anciens messages pour ne garder que les 30 plus récents
+    if (ychat.length > 30) {
+      ychat.delete(0, ychat.length - 30);
     }
   });
 
@@ -251,10 +257,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     'Ctrl-Alt-S': () => {functionUtils.unSoloPlayers(wsServer)},
     'Alt-J': (cm) => {functionUtils.jumpToOtherPlayer(cm, awareness)},
     'Ctrl-Alt-J': (cm) => {functionUtils.previousJump(cm)},
-    'Alt-1': (cm) => markerUtils.setMarker(cm, "Red", "[[ Attention à un truc ]]", awareness, ymarkers, ychat),
-    'Alt-2': (cm) => markerUtils.setMarker(cm, "Green", "[[ taggué ]]", awareness, ymarkers, ychat),
-    'Alt-3': (cm) => markerUtils.setMarker(cm, "Blue", "[[ ça c'est cool ]]", awareness, ymarkers, ychat),
-    'Alt-4': () => markerUtils.resetMarkers(ymarkers),
+    'Alt-1': (cm) => markerUtils.setMarker(cm, "Red", cm.getLine(cm.getCursor().line), awareness, ymarkers, ychat),
+    'Alt-2': () => markerUtils.resetMarkers(ymarkers),
     'Alt-C': (cm) => {
       chatUtils.getChat(cm, "", (text, line) => {
         const userState = awareness.getLocalState();
@@ -271,7 +275,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       evaluateCode(cm, true)
       }
     },
-    'Alt-I': (cm) => showDefinition(cm),
+    'Alt-I': (cm) => {
+      if (hydra){
+        showHydraDefinition(cm);
+      }
+      else {
+        showDefinition(cm);
+            }   
+    },
     'Alt-F': "findPersistent",
     'Ctrl-G': "findNext",
     'Ctrl-Alt-Left': "goLineStart",
@@ -324,7 +335,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Gestion de l'autocomplétion
   editor.setOption('hintOptions', {
-    hint: (cm) => foxdotAutocomplete.hint(cm, CodeMirror),
+    hint: (cm) => {
+      if (hydra) {
+        return hydraAutocomplete.hint(cm, CodeMirror);
+      } else {
+        return foxdotAutocomplete.hint(cm, CodeMirror);
+      }
+    }
   });
 
   // Ajouter l'écouteur d'awareness
@@ -365,13 +382,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         else if (message.type === 'autocomplete') {
           const { loops, fxList, synthList, attackList } = functionUtils.formatFoxDotAutocomplete(message);
+          // obj1.filter(i => !obj2.includes(i.id))
+          const toExclude = ["__init__", "1s", ""];
+          let filteredLoops = loops.filter(i => !toExclude.includes(i.displayText)); 
 
-          foxdotAutocomplete.loopList = loops;
+          foxdotAutocomplete.loopList = filteredLoops;
           foxdotAutocomplete.fxList = fxList;
           foxdotAutocomplete.synths= synthList;
           foxdotAutocomplete.attackList = attackList;
-
-          updateHelpPanel(loops, fxList, synthList);
+          
+          filteredLoops = filteredLoops.filter(loop => !loop.displayText.startsWith('AKWF'));
+          updateHelpPanel(filteredLoops, fxList, synthList);
 
           if (loops.length == 0 || fxList.length == 0 || synthList.length == 0 || attackList.length == 0) {
             console.error(`Erreur lors de la récupération de la liste des boucles (${loops.length}), effets (${fxList.length}), synthés (${synthList.length}) ou attaques (${attackList.length})`);

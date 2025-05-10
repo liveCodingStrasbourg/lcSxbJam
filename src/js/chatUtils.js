@@ -33,8 +33,9 @@ export const chatUtils = {
         if (!line){
             line = 0;
         }
-        chatMessage.textContent += `${line.toString().padStart(3, '0')}| ${userName}: ${text}`
-        chatMessage.style.color = userColor
+        chatMessage.textContent += `${userName}: ${text}`
+        chatMessage.style.color = "var(--text-col-1)";
+        chatMessage.style.opacity = "1.0 !important";
         this.chatPanel.insertBefore(chatMessage, this.chatPanel.firstChild);
         this.flashChatPanel();
     }

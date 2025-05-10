@@ -17,7 +17,7 @@ export function setupConfigPanel(awareness, editor) {
     const themeInterfaceSelector = document.getElementById('themeInterfaceSelector');
 
     // Restaurer les données utilisateur
-    const savedUser = localStorage.getItem('webtroop-user');
+    const savedUser = localStorage.getItem('lcsxbjam-user');
     if (savedUser) {
         const userInfo = JSON.parse(savedUser);
         userNameInput.value = userInfo.name;
@@ -32,7 +32,7 @@ export function setupConfigPanel(awareness, editor) {
         };
         
         // Sauvegarder dans localStorage
-        localStorage.setItem('webtroop-user', JSON.stringify(userInfo));
+        localStorage.setItem('lcsxbjam-user', JSON.stringify(userInfo));
         
         // Mettre à jour awareness
         awareness.setLocalStateField('user', userInfo);
@@ -61,11 +61,11 @@ export function setupConfigPanel(awareness, editor) {
         const font = e.target.value;
         editor.getWrapperElement().style.fontFamily = font;
         document.body.style.fontFamily = font;
-        localStorage.setItem('preferredFont', font);
+        localStorage.setItem('lcsxbjam-preferredFont', font);
     });
 
     // Restaurer la police sauvegardée
-    const savedFont = localStorage.getItem('preferredFont');
+    const savedFont = localStorage.getItem('lcsxbjam-preferredFont');
     if (savedFont) {
         fontSelect.value = savedFont;
         editor.getWrapperElement().style.fontFamily = savedFont;
@@ -90,11 +90,11 @@ export function setupConfigPanel(awareness, editor) {
     themeSelect.addEventListener('change', (e) => {
         const theme = e.target.value;
         editor.setOption('theme', theme);
-        localStorage.setItem('preferredTheme', theme);
+        localStorage.setItem('lcsxbjam-preferredTheme', theme);
     });
 
     // Restaurer le thème
-    const savedTheme = localStorage.getItem('preferredTheme');
+    const savedTheme = localStorage.getItem('lcsxbjam-preferredTheme');
     if (savedTheme) {
         editor.setOption('theme', savedTheme);
         themeSelect.value = savedTheme;
@@ -103,13 +103,13 @@ export function setupConfigPanel(awareness, editor) {
     
 
     // Restaurer la taille sauvegardée
-    const savedSize = localStorage.getItem('preferredFontSize');
+    const savedSize = localStorage.getItem('lcsxbjam-preferredFontSize');
     if (savedSize) {
         fontSizeSlider.value = savedSize;
         updateFontSize(savedSize);
     }
 
-    const savedInterfaceSize = localStorage.getItem('preferredInterfaceFontSize');
+    const savedInterfaceSize = localStorage.getItem('lcsxbjam-preferredInterfaceFontSize');
     if (savedInterfaceSize) {
         fontInterfaceSizeSlider.value = savedInterfaceSize;
         updateInterfaceFontSize(savedInterfaceSize);
@@ -132,7 +132,7 @@ export function setupConfigPanel(awareness, editor) {
         editor.refresh();
         
         // Sauvegarder la préférence
-        localStorage.setItem('preferredFontSize', size);
+        localStorage.setItem('lcsxbjam-preferredFontSize', size);
     }
 
     fontInterfaceSizeSlider.addEventListener('input', (e) => {
@@ -148,7 +148,7 @@ export function setupConfigPanel(awareness, editor) {
         document.documentElement.style.fontSize = size + 'px';
         
         // Sauvegarder la préférence
-        localStorage.setItem('preferredInterfaceFontSize', size);
+        localStorage.setItem('lcsxbjam-preferredInterfaceFontSize', size);
     };
 
     // Ouvrir la modal
@@ -169,7 +169,7 @@ export function setupConfigPanel(awareness, editor) {
     }
 
     // Restore the interface theme
-    const savedInterfaceTheme = localStorage.getItem('selectedInterfaceTheme') || 'dark';
+    const savedInterfaceTheme = localStorage.getItem('lcsxbjam-selectedInterfaceTheme') || 'dark';
     document.documentElement.className = `${savedInterfaceTheme}-theme`;
     themeInterfaceSelector.value = savedInterfaceTheme;
     
@@ -177,7 +177,7 @@ export function setupConfigPanel(awareness, editor) {
     themeInterfaceSelector.addEventListener('change', (e) => {
         const selectedInterfaceTheme = e.target.value;
         document.documentElement.className = `${selectedInterfaceTheme}-theme`;
-        localStorage.setItem('selectedInterfaceTheme', selectedInterfaceTheme);
+        localStorage.setItem('lcsxbjam-selectedInterfaceTheme', selectedInterfaceTheme);
     });
     // themeInterface.addEventListener('change', (event) => {
     //     if (event.target.checked) {

@@ -56,13 +56,15 @@
                   
             <section>
                 <fieldset class="info-row">
-                    <legend>Hydra</legend>
+                    <legend id="language">FoxDot</legend>
                         <div class="hydra-switch">
                             <!-- <label>Hydra</label> -->
+                            <p>Foxdot</p>
                             <label for="hydraSwitch" class="toggle-switch">
                                 <input type="checkbox" id="hydraSwitch" >
                                 <span class="slider"></span>
                             </label>
+                            <p>Hydra</p>
                         </div>
                 </fieldset>    
             </section>
@@ -125,6 +127,7 @@
             <canvas id="canva"></canvas>
             <div class="logPanel" id="logPanel">
                 <div id="separator">
+                    <div id="languageDisplayCorner">###</div>
                 </div>
                 <div id="logAndChat">
                     <div id="logs"></div>
@@ -275,11 +278,15 @@
             <div class="shortcuts-grid">
                 <div class="shortcut">
                     <div class="shortcut-key"><strong>Ctrl + ;</strong></div>
-                    <div class="shortcut-desc">Stopper FoxDot</div>
+                    <div class="shortcut-desc">Stopper FoxDot/Hydra</div>
                 </div>
                 <div class="shortcut">
                     <div class="shortcut-key"><strong>Ctrl + C</strong></div>
                     <div class="shortcut-desc">Copier la ligne courante</div>
+                </div>
+                <div class="shortcut">
+                    <div class="shortcut-key"><strong>Alt + Y</strong></div>
+                    <div class="shortcut-desc">Toggle entre FoxDot et Hydra</div>
                 </div>
                 <div class="shortcut">
                     <div class="shortcut-key"><strong>Ctrl + Shift + D</strong></div>
@@ -315,19 +322,15 @@
                 </div>
                 <div class="shortcut">
                     <div class="shortcut-key"><strong>Ctrl + Enter</strong></div>
-                    <div class="shortcut-desc">Évalue la ligne</div>
+                    <div class="shortcut-desc">Évalue la ligne/le bloc</div>
                 </div>
                 <div class="shortcut">
-                    <div class="shortcut-key"><strong>Ctrl + Alt + Enter</strong></div>
-                    <div class="shortcut-desc">Évalue le bloc</div>
+                    <div class="shortcut-key"><strong>Alt + 1</strong></div>
+                    <div class="shortcut-desc">Ajoute la ligne dans les commentaires et met un marqueur</div>
                 </div>
                 <div class="shortcut">
-                    <div class="shortcut-key"><strong>Alt + 1/2/3</strong></div>
-                    <div class="shortcut-desc">Place un marker sur la ligne de différente couleur</div>
-                </div>
-                <div class="shortcut">
-                    <div class="shortcut-key"><strong>Alt + 4</strong></div>
-                    <div class="shortcut-desc">Supprime tous les markers</div>
+                    <div class="shortcut-key"><strong>Alt + 2</strong></div>
+                    <div class="shortcut-desc">Supprime les marqueurs</div>
                 </div>
                 <div class="shortcut">
                     <div class="shortcut-key"><strong>Alt + C</strong></div>
@@ -368,6 +371,10 @@
                 <div class="shortcut">
                     <div class="shortcut-key"><strong>Ctrl + S</strong></div>
                     <div class="shortcut-desc">Sauvegarde du code en fichier code.py</div>
+                </div>
+                <div class="shortcut">
+                    <div class="shortcut-key"><strong>Alt + A</strong></div>
+                    <div class="shortcut-desc">Randomizer</div>
                 </div>
 
             </div>
