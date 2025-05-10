@@ -123,7 +123,7 @@ hint: function(cm, CodeMirror) {
   // Si la ligne est vide ou commence, suggérer les sources
   if (beforeCursor.trim() === '') {
     return {
-      list: ["--Sources--", ...this.sources,"--InitSources--", ...this.initSources, "--Utilities--", ...this.utilities],
+      list: [...[{text:"", displayText: "--Sources--"}], ...this.sources,...[{text:"", displayText: "--InitSources--"}], ...this.initSources, ...[{text:"", displayText: "--Utilities--"}], ...this.utilities],
       from: CodeMirror.Pos(cursor.line, 0),
       to: CodeMirror.Pos(cursor.line, cursor.ch)
     };
@@ -140,7 +140,7 @@ hint: function(cm, CodeMirror) {
   // Si on est à l'intérieur de parenthèses, suggérer les fonctions mathématiques et sources
   if (insideParentheses) {
     const prefix = beforeCursor.split('(').pop().trim();
-    const suggestionList = ["--Sources--", ...this.sources, "--Math--", ...this.mathFunctions, ];
+    const suggestionList = [...[{text:"", displayText: "--Sources--"}], ...this.sources, ...[{text:"", displayText: "--Math--"}], ...this.mathFunctions, ];
     const suggestions = suggestionList.filter(
       item => item.displayText.startsWith(prefix)
     );
