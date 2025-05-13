@@ -1,5 +1,6 @@
 import { EventEmitter } from './eventBus.js';
 import Hydra from 'hydra-synth';
+import { logsUtils } from './logs.js';
 
 export const hydraUtils = {
   hydra: null,
@@ -72,6 +73,7 @@ export const hydraUtils = {
       });
     } catch (error) {
       // Log erreur
+      logsUtils.appendLog(`Hydra: ${error}`, "red");
       EventEmitter.emit('log:add', {
         type: 'error',
         message: `Erreur Hydra: ${error.message}`

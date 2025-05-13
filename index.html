@@ -101,11 +101,17 @@
 						<input type="radio" id="tab-loop" name="help-tab" checked>
 						<input type="radio" id="tab-synth" name="help-tab">
 						<input type="radio" id="tab-fx" name="help-tab">
+                        <input type="radio" id="tab-hydra-source" name="help-tab">
+                        <input type="radio" id="tab-hydra-transfo" name="help-tab">
+                        <input type="radio" id="tab-hydra-fx" name="help-tab">
 						
 						<ul class="help-label">
-							<li class="tab"><label for="tab-loop">Loop</label></li>
-							<li class="tab"><label for="tab-synth">Synth</label></li>
-							<li class="tab"><label for="tab-fx">FX</label></li>
+							<li class="tab" id="fox-loop-tab"><label for="tab-loop" >Loop</label></li>
+							<li class="tab" id="fox-synth-tab"><label for="tab-synth">Synth</label></li>
+							<li class="tab" id="fox-fx-tab"><label for="tab-fx">FX</label></li>
+                            <li class="tab" id="hydra-source-tab"><label for="tab-hydra-source">Source</label></li>
+                            <li class="tab" id="hydra-transfo-tab"><label for="tab-hydra-transfo">Transfo</label></li>
+                            <li class="tab" id="hydra-fx-tab"><label for="tab-hydra-fx">FX</label></li>
 						</ul>
 						<!-- <div id="help-content" class="simple-text"> -->
 						<div class="help-content" id="helpLoop">
@@ -117,7 +123,18 @@
 						<div class="help-content" id="helpFx">
 							Fx
 						</div>
-						<!-- </div> -->
+                        <div class="help-content"
+                            id="helpHydraSource">
+                            Source
+                        </div>
+                        <div class="help-content"
+                            id="helpHydraTransfo">
+                            Transfo
+                        </div>
+                        <div class="help-content"
+                            id="helpHydraFx">
+                            Fx
+                        </div>
 					</div>
 				</fieldset>
 			</section>

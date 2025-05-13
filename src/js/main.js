@@ -3,7 +3,7 @@
 import CodeMirror from 'codemirror'
 import { CodemirrorBinding } from 'y-codemirror'
 import { EventEmitter } from './eventBus.js';
-import { setupConfigPanel, updateHelpPanel } from './configPanel.js'
+import { setupConfigPanel, updateHelpPanel, toggleHydraHelp } from './configPanel.js'
 import * as Y from 'yjs'
 import { WebsocketProvider } from 'y-websocket';
 import { Awareness } from 'y-protocols/awareness'
@@ -66,12 +66,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   hydraSwitch.checked = hydra;
   languageLabel.textContent = hydra ? 'Hydra' : 'FoxDot';
   separator.style.background = hydra ? 'aqua' : 'red';
-  
+  toggleHydraHelp(hydra);
+
   hydraSwitch.addEventListener('change', (event) => {
     hydra = event.currentTarget.checked;
     localStorage.setItem('lcsxbjam-hydraEnabled', hydra);
     separator.style.background = hydra ? 'aqua' : 'red';
     languageLabel.textContent = hydra ? 'Hydra' : 'FoxDot';
+    toggleHydraHelp(hydra);
   })
 
 

@@ -1,4 +1,5 @@
-// Nouveau fichier: configPanel.js
+import { hydraAutocomplete } from './hydraAutocomplete.js';
+
 export function setupConfigPanel(awareness, editor) {
     const configButton = document.getElementById('configButton');
     const configPanel = document.getElementById('configPanel');
@@ -210,4 +211,38 @@ export function updateHelpPanel(loopList, fxList, synthList) {
         .filter(synth => !synth.displayText.endsWith("_"))
         .map(synth => `<span>${synth.displayText}</span>`)
         .join('');
+    document.getElementById('helpHydraSource').innerHTML = hydraAutocomplete.sources.map(item => `<span>${item.displayText}</span>`).join("")
+    document.getElementById('helpHydraTransfo').innerHTML = hydraAutocomplete.transformations.map(item => `<span>${item.displayText}</span>`).join("")
+    document.getElementById('helpHydraFx').innerHTML = hydraAutocomplete.effects.map(item => `<span>${item.displayText}</span>`).join("")
 } 
+
+export function toggleHydraHelp(hydra) {
+    const hydraSource = document.getElementById('hydra-source-tab');
+    const hydraTransfo = document.getElementById('hydra-transfo-tab');
+    const hydraFx = document.getElementById('hydra-fx-tab');
+    const foxLoops = document.getElementById('fox-loop-tab');
+    const foxFx = document.getElementById('fox-fx-tab');
+    const foxSynth = document.getElementById('fox-synth-tab');
+    const foxinput = document.getElementById('tab-loop');
+    const hydrainput = document.getElementById('tab-hydra-source');
+
+    if (hydra) {
+        hydraSource.style.display = "block";
+        hydraTransfo.style.display = "block";
+        hydraFx.style.display = "block";
+        foxLoops.style.display = "none";
+        foxFx.style.display = "none";
+        foxSynth.style.display = "none";
+        hydrainput.checked = true;
+        foxinput.checked = false;
+    } else {
+        hydraSource.style.display = "none";
+        hydraTransfo.style.display = "none";
+        hydraFx.style.display = "none";
+        foxLoops.style.display = "block";
+        foxFx.style.display = "block";
+        foxSynth.style.display = "block";
+        foxinput.checked = true;
+        hydrainput.checked = false;
+    }
+}
