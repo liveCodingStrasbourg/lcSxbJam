@@ -8,6 +8,32 @@ export const hydraAutocomplete = {
       { text: 'gradient()', displayText: 'gradient' },
       { text: 'solid()', displayText: 'solid' },
       { text: 'src()', displayText: 'src' },
+      // lib-noise sources
+      { text: 'whitenoise()', displayText: 'whitenoise' },
+      { text: 'colornoise()', displayText: 'colornoise' },
+      { text: 'unoise()', displayText: 'unoise' },
+      { text: 'turb()', displayText: 'turb' },
+      { text: 'uturb()', displayText: 'uturb' },
+      { text: 'warp()', displayText: 'warp' },
+      { text: 'cwarp()', displayText: 'cwarp' },
+      { text: 'ncontour()', displayText: 'ncontour' },
+      // op-art patterns sources (lib-pattern)
+      { text: 'brick()', displayText: 'brick' },
+      { text: 'checker()', displayText: 'checker' },
+      { text: 'concentric()', displayText: 'concentric' },
+      { text: 'hextile()', displayText: 'hextile' },
+      { text: 'lissa()', displayText: 'lissa' },
+      { text: 'pulse()', displayText: 'pulse' },
+      { text: 'pulsetrain()', displayText: 'pulsetrain' },
+      { text: 'spiral()', displayText: 'spiral' },
+      { text: 'wave()', displayText: 'wave' },
+      // Soft patterns sources (lib-softpattern)
+    { text: 'blinking()', displayText: 'blinking' },
+    { text: 'blobs()', displayText: 'blobs' },
+    { text: 'concentric()', displayText: 'concentric' }, // Attention: même nom, vérifiez si besoin d'une distinction
+    { text: 'phasenoise()', displayText: 'phasenoise' },
+    { text: 'sdfmove()', displayText: 'sdfmove' },
+    { text: 'smoothsun()', displayText: 'smoothsun' }
     ],
     
     initSources: [

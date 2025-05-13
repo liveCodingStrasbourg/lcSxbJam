@@ -8,6 +8,32 @@ const sources = {
   gradient: 'gradient(speed)\nGénère un gradient animé. \nspeed: vitesse d\'animation (défaut: 0)',
   solid: 'solid(r, g, b, a)\nCrée une couleur unie. \nr,g,b: composantes de couleur (0-1)\na: canal alpha (défaut: 1)',
   src: 'src(input)\nRécupère une source vidéo. \ninput: nom de la source (o0-o3, s0-s3)',
+
+  whitenoise: 'whitenoise(size, dynamic)\nBlack and white high frequency noise.\nsize: float (default: 10.0)\ndynamic: float (default: 0.0)',
+  colornoise: 'colornoise(size, dynamic)\nColored high frequency noise.\nsize: float (default: 10.0)\ndynamic: float (default: 0.0)',
+  unoise: 'unoise(scale, offset)\nUnsigned Perlin noise scaled to 0..1.\nscale: float (default: 10.0)\noffset: float (default: 0.1)',
+  turb: 'turb(scale, offset, octaves)\nTurbulent noise (signed value).\nscale: float (default: 10.0)\noffset: float (default: 0.1)\noctaves: float (default: 3.0)',
+  uturb: 'uturb(scale, offset, octaves)\nUnsigned turbulent noise scaled to 0..1.\nscale: float (default: 10.0)\noffset: float (default: 0.1)\noctaves: float (default: 3.0)',
+  warp: 'warp(scalei, offset, octaves, octavesinner, scale)\nDomain warping noise.\nscalei: float (default: 10.0)\noffset: float (default: 0.1)\noctaves: float (default: 2.0)\noctavesinner: float (default: 3.0)\nscale: float (default: 1.0)',
+  cwarp: 'cwarp(scalei, offset, octaves, octavesinner, scale, focus)\nCentered domain warping noise.\nscalei: float (default: 10.0)\noffset: float (default: 0.1)\noctaves: float (default: 2.0)\noctavesinner: float (default: 3.0)\nscale: float (default: 1.0)\nfocus: float (default: 0.5)',
+  ncontour: 'ncontour(thresh, smooth, octaves, scale, speed, step)\nContour from noise.\nthresh: float (default: 0.5)\nsmooth: float (default: 0.1)\noctaves: int (default: 3)\nscale: float (default: 5.0)\nspeed: float (default: 0.5)\nstep: float (default: 2.0)',
+
+  brick: 'brick(width, height, gap)\nBrick pattern.\n\nsee: Ebert, Musgrave, Peachey, Perlin Worley\n"Texturing and Modeling – A Procedural Approach"\nDarwyn Peachey, Building Procedural Textures, page 37\n\nwidth: float (default: 0.25)\nheight: float (default: 0.08)\ngap: float (default: 0.01)',
+  checker: 'checker()\nCheckerboard pattern.\n\nrepeats: float (default: 10.0)',
+  concentric: 'concentric(scale, centerX, centerY)\nConcentric circles pattern.\n\nscale: float (default: 100.0)\ncenterX: float (default: 0.5)\ncenterY: float (default: 0.5)',
+  hextile: 'hextile(tiles)\nHex tiles pattern.\n\ntiles: float (default: 10.0)',
+  lissa: 'lissa(time, frequ, loops, thick)\nLissajous curve pattern.\n\ntime: float (default: 0.0)\nfrequ: float (default: 10.0)\nloops: float (default: 3.0)\nthick: float (default: 0.025)',
+  pulse: 'pulse(edge, width, epsilon)\nPulse pattern.\n\nedge: float (default: 0.5)\nwidth: float (default: 0.05)\nepsilon: float (default: 0.001)',
+  pulsetrain: 'pulsetrain(train, edge, width, epsilon)\nPulse train pattern.\n\ntrain: float (default: 3.0)\nedge: float (default: 0.5)\nwidth: float (default: 0.05)\nepsilon: float (default: 0.001)',
+  spiral: 'spiral(a, b, thickness)\nSpiral pattern.\n\na: float (default: 1.0)\nb: float (default: 5.0)\nthickness: float (default: 0.1)',
+  wave: 'wave(time, frequ, loops, thick)\nWave pattern.\n\ntime: float (default: 0.0)\nfrequ: float (default: 10.0)\nloops: float (default: 3.0)\nthick: float (default: 0.025)',
+  // softpattern
+  blinking: 'blinking(tiles, scale, speed, phase)\nBlinking grid: Looks like a grid of colorful square lamps.\ntiles: float (default: 5.0)\nscale: float (default: 5.0)\nspeed: float (default: 0.5)\nphase: float (default: 0.03)',
+  blobs: 'blobs(speed, tresh, soft)\nThree blobs are dancing around.\nspeed: float (default: 0.1)\ntresh: float (default: 0.2)\nsoft: float (default: 0.05)',
+  concentric: 'concentric(base, octaves, ampscale, speed)\nHarmonic concentric rings pattern.\nbase: float (default: 5.0)\noctaves: float (default: 2.0)\nampscale: float (default: 0.5)\nspeed: float (default: 1.0)',
+  phasenoise: 'phasenoise(base, range, scale, speed, phase)\nNoise in HSV with phase shifting.\nbase: float (default: 0.0)\nrange: float (default: 0.1)\nscale: float (default: 5.0)\nspeed: float (default: 0.5)\nphase: float (default: 0.03)',
+  sdfmove: 'sdfmove(speed1, speed2, speed3)\nMoving ramp pattern.\nspeed1: float (default: 0.73)\nspeed2: float (default: 1.0)\nspeed3: float (default: -0.5)',
+  smoothsun: 'smoothsun(threshold, border, speed, ampscale)\nSmooth sun pattern.\nthreshold: float (default: 0.3)\nborder: float (default: 0.2)\nspeed: float (default: 1.0)\nampscale: float (default: 0.5)'
 };
 
 const initSources = {

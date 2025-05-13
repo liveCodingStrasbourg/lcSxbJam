@@ -43,7 +43,17 @@ export const hydraUtils = {
       detectAudio: true,
       enableStreamCapture: true
     });
-    
+
+    const script = document.createElement('script');
+    script.src = 'src/js/hydra_extra_shader.js'; 
+    script.onload = () => {
+      console.log('Shader definitions loaded');
+    };
+    script.onerror = () => {
+      console.error('Erreur lors du chargement du shader externe');
+    };
+    document.head.appendChild(script);
+
     EventEmitter.on('hydra:evaluate', this.evaluateCode.bind(this));
     EventEmitter.on('hydra:remoteEvaluate', this.evaluateRemoteCode.bind(this));
     
