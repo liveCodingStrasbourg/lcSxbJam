@@ -30,7 +30,7 @@ const sources = {
   // softpattern
   blinking: 'blinking(tiles, scale, speed, phase)\nBlinking grid: Looks like a grid of colorful square lamps.\ntiles: float (default: 5.0)\nscale: float (default: 5.0)\nspeed: float (default: 0.5)\nphase: float (default: 0.03)',
   blobs: 'blobs(speed, tresh, soft)\nThree blobs are dancing around.\nspeed: float (default: 0.1)\ntresh: float (default: 0.2)\nsoft: float (default: 0.05)',
-  concentric: 'concentric(base, octaves, ampscale, speed)\nHarmonic concentric rings pattern.\nbase: float (default: 5.0)\noctaves: float (default: 2.0)\nampscale: float (default: 0.5)\nspeed: float (default: 1.0)',
+  concentric2: 'concentric2(base, octaves, ampscale, speed)\nHarmonic concentric rings pattern.\nbase: float (default: 5.0)\noctaves: float (default: 2.0)\nampscale: float (default: 0.5)\nspeed: float (default: 1.0)',
   phasenoise: 'phasenoise(base, range, scale, speed, phase)\nNoise in HSV with phase shifting.\nbase: float (default: 0.0)\nrange: float (default: 0.1)\nscale: float (default: 5.0)\nspeed: float (default: 0.5)\nphase: float (default: 0.03)',
   sdfmove: 'sdfmove(speed1, speed2, speed3)\nMoving ramp pattern.\nspeed1: float (default: 0.73)\nspeed2: float (default: 1.0)\nspeed3: float (default: -0.5)',
   smoothsun: 'smoothsun(threshold, border, speed, ampscale)\nSmooth sun pattern.\nthreshold: float (default: 0.3)\nborder: float (default: 0.2)\nspeed: float (default: 1.0)\nampscale: float (default: 0.5)'

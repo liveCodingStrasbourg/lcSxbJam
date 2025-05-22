@@ -1220,7 +1220,7 @@ setFunction({
     return vec4(gray, gray, gray, 1.0);
 `})
 setFunction({
-  name: 'concentric',
+  name: 'concentric2',
   type: 'src',
   inputs: [
     {name: 'base',     type: 'float', default: 5.0},

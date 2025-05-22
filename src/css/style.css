@@ -215,7 +215,8 @@ body {
 }
 
 .CodeMirror-activeline-background {
-  opacity: 0.9 !important;
+  opacity: 1 !important;
+  background-color: rgba(0,0,0,0.95) !important; 
 }
 
 .CodeMirror-tooltip {

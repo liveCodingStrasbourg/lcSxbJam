@@ -10,6 +10,7 @@ export function setupConfigPanel(awareness, editor) {
     const fontSizeValue = document.getElementById('fontSizeValue');
     const fontInterfaceSizeSlider = document.getElementById('fontInterfaceSizeSlider');
     const fontInterfaceSizeValue = document.getElementById('fontInterfaceSizeValue');
+    const keybindingsSelect = document.getElementById('keybindingsSelect');
     const modal = document.getElementById("shortcutsModal");
     const modalbtn = document.getElementById("openModalBtn");
     const closeModal = document.getElementById("closeModal");
@@ -24,6 +25,16 @@ export function setupConfigPanel(awareness, editor) {
         userNameInput.value = userInfo.name;
         userColorInput.value = userInfo.color;
         updateUserInfo(); // Met à jour awareness
+    }
+
+    // Keybindings restore
+
+
+
+    const savedKeybindings = localStorage.getItem('webFoxPreferredKeybindings');
+    if (savedKeybindings) {
+        keybindingsSelect.value = savedKeybindings;
+        editor.setOption('keyMap', savedKeybindings);
     }
 
     function updateUserInfo() {
@@ -101,6 +112,11 @@ export function setupConfigPanel(awareness, editor) {
         themeSelect.value = savedTheme;
     }
 
+    keybindingsSelect.addEventListener('change', (e) => {
+        const keybindings = e.target.value;
+        editor.setOption('keyMap', keybindings);
+        localStorage.setItem('webFoxPreferredKeybindings', keybindings);
+    });
     
 
     // Restaurer la taille sauvegardée
