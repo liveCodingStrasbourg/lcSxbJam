@@ -1,9 +1,8 @@
 // @ts-ignore
-// import { CONFIG} from '../../config.js';
 import CodeMirror from 'codemirror'
 import { CodemirrorBinding } from 'y-codemirror'
 import { EventEmitter } from './eventBus.js';
-import { setupConfigPanel, updateHelpPanel, toggleHydraHelp } from './configPanel.js'
+import { setupConfigPanel, updateHelpPanel, toggleHydraHelp, updateHydraHelp } from './configPanel.js'
 import * as Y from 'yjs'
 import { WebsocketProvider } from 'y-websocket';
 import { Awareness } from 'y-protocols/awareness'
@@ -32,7 +31,8 @@ import { markerUtils } from './markerUtils.js';
 import { foxdotAutocomplete } from './foxdotAutocomplete.js';
 import { hydraAutocomplete } from './hydraAutocomplete.js';
 import { showDefinition } from './foxdotDefinitions.js';
-import { showHydraDefinition } from './hydraDefinition.js';
+import { showHydraDefinition, removeAllTooltips } from './hydraDefinition.js';
+import { hydraColorPicker } from './colorPicker.js';
 import { hydraUtils } from './hydraUtils.js';
 
 import 'codemirror/lib/codemirror.css'
@@ -42,6 +42,7 @@ import 'codemirror/addon/fold/foldgutter.css'
 import '../css/style.css'
 import '../css/crashpanel.css'
 import '../css/configPanel.css'
+import '../css/customCodeMirror.css';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Récupération de la configuration
@@ -241,9 +242,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
+  // Open the color picker and replace the color code
+  function selectColor(cm) {
+    const detection = hydraColorPicker.detectColorFunction(cm);
+        
+        if (detection.found) {
+            hydraColorPicker.openNativeColorPicker(cm, detection, (r, g, b, detectionInfo) => {
+                const newColorCode = `${r.toFixed(2)}, ${g.toFixed(2)}, ${b.toFixed(2)}`;
+                const startPos = { line: detectionInfo.start.line, ch: detectionInfo.openParenPos };
+                const endPos = { line: detectionInfo.start.line, ch: detectionInfo.closeParenPos };
+                
+                cm.replaceRange(newColorCode, startPos, endPos);
+                evaluateCodeHydra(cm);
+            });
+        } else {
+            console.log('Place your cursor in a .color() function to use the color picker');
+        }
+  } 
+
   // Gestion de CTRL+ENTER
   editor.setOption('extraKeys', {
-    'Ctrl-;': ()=> functionUtils.stopClock(wsServer),
+    'Ctrl-;': ()=> {
+      if (hydra) {
+        hydraUtils.stopHydra();
+      } else {
+        functionUtils.stopClock(wsServer)
+      }
+    },
     'Ctrl-Space': 'autocomplete',
     'Ctrl-S': (cm)=> {functionUtils.saveEditorContent(cm,wsServer)},
     'Alt-X': (cm) => {
@@ -334,6 +359,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       'Alt-A': (cm) => {functionUtils.randomizer(cm)},
       'Alt-R': (cm) => {functionUtils.resetPlayer(cm, wsServer)},
       'Alt-Y': ()=> {hydraUtils.toggleHydra()},
+      'Esc': () => { removeAllTooltips(); },
+      'Ctrl-K': (cm) => { selectColor(cm); },
   });
 
   // Gestion de l'autocomplétion
@@ -486,6 +513,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Initialiser le module hydra
     await hydraUtils.init();
+    updateHydraHelp();
     console.log('Hydra module initialized'); 
   } catch (error) {
     console.error('Error initializing Hydra module:', error);

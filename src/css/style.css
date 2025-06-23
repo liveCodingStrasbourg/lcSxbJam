@@ -190,21 +190,11 @@ body {
   border-color: var(--col-blue);
 }
 
-.CodeMirror {
-  height: 100%;
-  font-size: 16px;
-  color: var(--text-col-1);
-  background: transparent !important;
-}
-
 .CodeMirror pre.CodeMirror-line {
   padding-bottom: 0.8rem;
   font-variant-ligatures: none !important;
 }
 
-.CodeMirror-cursor {
-  border-left: 2px solid #fff !important; /* Curseur blanc */
-}
 
 .CodeMirror-lines {
   padding-left: 0.5rem;
@@ -214,37 +204,6 @@ body {
   left: -0.5rem !important; 
 }
 
-.CodeMirror-activeline-background {
-  opacity: 1 !important;
-  background-color: rgba(0,0,0,0.95) !important; 
-}
-
-.CodeMirror-tooltip {
-  position: absolute;
-  background-color: var(--bg-col-2);
-  white-space: pre;
-  color: var(--text-col-1);
-  border: 1px solid var(--border-col-2);
-  border-radius: 4px;
-  padding: 0.2rem;
-  font-size: inherit;
-  font-family: inherit;
-  z-index: 1000;
-}
-
-.CodeMirror-matchingbracket {
-  color: var(--col-green) !important; /* Vert vif */
-  background-color: rgba(0, 255, 0, 0.2); /* Fond vert transparent */
-  font-weight: bold;
-  border-bottom: 1px solid var(--col-blue);
-}
-
-/* Style des parenthèses/crochets non correspondants */
-.CodeMirror-nonmatchingbracket {
-  color: var(--col-red) !important; /* Rouge */
-  background-color: rgba(255, 0, 0, 0.2); /* Fond rouge transparent */
-  font-weight: bold;
-}
 
 .CodeMirror-dialog-bottom {
   bottom: 0.2rem;
@@ -330,20 +289,4 @@ body {
 .flash-highlight {
   background-color: var(--flash-col) !important;
   transition: background-color 0.2s ease;
-}
-
-.CodeMirror-hints {
-  background: var(--bg-col-2);
-  border: 1px solid var(--border-col-2);
-  font-family: inherit;
-  padding: 2px;
-  font-size: inherit;
-  z-index: 40;
-}
-.CodeMirror-hint {
-  color: var(--text-col-1);
-  padding: 4px 8px;
-}
-.CodeMirror-hint-active {
-  background: var(--col-blue);
 }

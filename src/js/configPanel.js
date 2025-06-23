@@ -110,7 +110,7 @@ export function setupConfigPanel(awareness, editor) {
     if (savedTheme) {
         editor.setOption('theme', savedTheme);
         themeSelect.value = savedTheme;
-    }
+    } 
 
     keybindingsSelect.addEventListener('change', (e) => {
         const keybindings = e.target.value;
@@ -186,7 +186,7 @@ export function setupConfigPanel(awareness, editor) {
     }
 
     // Restore the interface theme
-    const savedInterfaceTheme = localStorage.getItem('lcsxbjam-selectedInterfaceTheme') || 'dark';
+    const savedInterfaceTheme = localStorage.getItem('lcsxbjam-selectedInterfaceTheme') || 'lcsxb';
     document.documentElement.className = `${savedInterfaceTheme}-theme`;
     themeInterfaceSelector.value = savedInterfaceTheme;
     
@@ -227,10 +227,16 @@ export function updateHelpPanel(loopList, fxList, synthList) {
         .filter(synth => !synth.displayText.endsWith("_"))
         .map(synth => `<span>${synth.displayText}</span>`)
         .join('');
-    document.getElementById('helpHydraSource').innerHTML = hydraAutocomplete.sources.map(item => `<span>${item.displayText}</span>`).join("")
+    
+}
+
+export function updateHydraHelp() {
+    const allSources = [...hydraAutocomplete.sources, ...hydraAutocomplete.noise, ...hydraAutocomplete.antliaShapes, ...hydraAutocomplete.art, ...hydraAutocomplete.pattern];
+    const allEffects = [...hydraAutocomplete.effects, ...hydraAutocomplete.colorEffects, ...hydraAutocomplete.screenSpaceShaders, ...hydraAutocomplete.fractalEffects];    
+    document.getElementById('helpHydraSource').innerHTML = allSources.map(item => `<span>${item.displayText}</span>`).join("")
     document.getElementById('helpHydraTransfo').innerHTML = hydraAutocomplete.transformations.map(item => `<span>${item.displayText}</span>`).join("")
-    document.getElementById('helpHydraFx').innerHTML = hydraAutocomplete.effects.map(item => `<span>${item.displayText}</span>`).join("")
-} 
+    document.getElementById('helpHydraFx').innerHTML = allEffects.map(item => `<span>${item.displayText}</span>`).join("")
+}
 
 export function toggleHydraHelp(hydra) {
     const hydraSource = document.getElementById('hydra-source-tab');
