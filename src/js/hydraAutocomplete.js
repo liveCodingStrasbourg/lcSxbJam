@@ -1,5 +1,5 @@
 export const hydraAutocomplete = {
-    // Sources (générateurs de base)
+    // Sources 
     sources: [
       { text: 'noise(10,0.1)', displayText: 'noise' },
       { text: 'voronoi(5,0.3,0.3)', displayText: 'voronoi' },
@@ -9,6 +9,98 @@ export const hydraAutocomplete = {
       { text: 'solid(1,1,1,1)', displayText: 'solid' },
       { text: 'src(o0)', displayText: 'src' },
     ],
+    
+    // Fonctions FCS - implicit curves
+    implicitCurves: [
+      { text: 'iCardioid(1.0,1.0)', displayText: 'iCardioid' },
+      { text: 'iBicorn(1.0,1.0,1.0)', displayText: 'iBicorn' },
+      { text: 'iAstroid(1.0,1.0,1.0)', displayText: 'iAstroid' },
+      { text: 'iCircle(1.0)', displayText: 'iCircle' },
+      { text: 'iCassOval(1.0,1.0,1.0,1.0)', displayText: 'iCassOval' },
+      { text: 'iSextic(1.0,1.0,1.0)', displayText: 'iSextic' },
+      { text: 'iCochleoid(1.0,1.0,1.0)', displayText: 'iCochleoid' },
+      { text: 'iCissoid(1.0,1.0,10.0)', displayText: 'iCissoid' },
+      { text: 'iSluzeConchoid(1.0,3.0,1.0)', displayText: 'iSluzeConchoid' },
+      { text: 'iDevil(1.0,4.0,1.0,3.0)', displayText: 'iDevil' },
+      { text: 'iDFolium(1.0,3.0)', displayText: 'iDFolium' },
+      { text: 'iSpiral(1.0,3.0,1.0)', displayText: 'iSpiral' },
+      { text: 'iFermatSpiral(1.0,1.0,1.0)', displayText: 'iFermatSpiral' },
+      { text: 'iFreethNephroid(1.0,1.0,2.0)', displayText: 'iFreethNephroid' },
+      { text: 'iInvoluteCircle(1.0,10.0)', displayText: 'iInvoluteCircle' },
+    ],
+
+    // Fonctions FCS - parametric curves
+    parametricCurves: [
+      { text: 'pAstroid(src(o0),1.0)', displayText: 'pAstroid' },
+      { text: 'pSpiral(src(o0),)', displayText: 'pSpiral' },
+      { text: 'pCardioid(src(o0),1.0,2.0)', displayText: 'pCardioid' },
+      { text: 'pConchoid(src(o0),1.0)', displayText: 'pConchoid' },
+      { text: 'pEpicycloid(src(o0),1.0,1.0)', displayText: 'pEpicycloid' },
+      { text: 'pDescartesFolium(src(o0),1.0,1.0)', displayText: 'pDescartesFolium' },
+      { text: 'pHypocycloid(src(o0),1.0,2.0)', displayText: 'pHypocycloid' },
+      { text: 'pHypotrochoid(src(o0),1.0,2.0,1.0)', displayText: 'pHypotrochoid' },
+      { text: 'pInvoluteCircle(src(o0),1.0)', displayText: 'pInvoluteCircle' },
+      { text: 'pCircle(src(o0),1.0)', displayText: 'pCircle' },
+      { text: 'pLissajous(src(o0),5.0,1.0,1.0,0.0)', displayText: 'pLissajous' },
+      { text: 'pNephroid(src(o0),1.0)', displayText: 'pNephroid' },
+      { text: 'pPlateau(src(o0),2.0,1.0)', displayText: 'pPlateau' },
+      { text: 'pTalbot(src(o0),1.0)', displayText: 'pTalbot' },
+    ],
+
+    // Fonctions FCS - parametric surfaces
+    parametricSurfaces: [
+      { text: 'pSphere(1.0,1.0)', displayText: 'pSphere' },
+      { text: 'pMobiusStrip(1.0,1.0)', displayText: 'pMobiusStrip' },
+      { text: 'pCylinder(1.0,1.0)', displayText: 'pCylinder' },
+      { text: 'pKleinBottle(1.0,1.0)', displayText: 'pKleinBottle' },
+      { text: 'pCrossCap(1.0,1.0)', displayText: 'pCrossCap' },
+      { text: 'pSteiner(1.0,1.0)', displayText: 'pSteiner' },
+      { text: 'pTorus(1.0,1.0,0.5)', displayText: 'pTorus' },
+    ],
+
+    // Fonctions FCS - implicit surfaces 
+    implicitSurfaces: [
+      { text: 'iSphere()', displayText: 'iSphere' },
+      { text: 'iCube()', displayText: 'iCube' },
+      { text: 'iTorus(0.5,1.0)', displayText: 'iTorus' },
+      { text: 'iPlane(1.0,1.0,1.0)', displayText: 'iPlane' },
+      { text: 'iSteiner(1.0)', displayText: 'iSteiner' },
+      { text: 'iWineGlass(3.2)', displayText: 'iWineGlass' },
+      { text: 'iGenus2()', displayText: 'iGenus2' },
+    ],
+
+    // Fonctions FCS - parametric surfaces inverted
+    inverseParametricSurfaces: [
+      { text: 'ipSphere(src(o0), 1.0)', displayText: 'ipSphere' },
+      { text: 'ipTorus(src(o0),1.0)', displayText: 'ipTorus' },
+      { text: 'ipMobiusStrip(src(o0))', displayText: 'ipMobiusStrip' },
+      { text: 'ipCylinder(src(o0))', displayText: 'ipCylinder' },
+      { text: 'ipKleinBottle(src(o0))', displayText: 'ipKleinBottle' },
+      { text: 'ipCrossCap(src(o0)1.0)', displayText: 'ipCrossCap' },
+    ],
+
+    // Fonctions FCS - Hypersurfaces parametric
+    parametricHypersurfaces: [
+      { text: 'hpSphere(src(o0),1.0)', displayText: 'hpSphere' },
+      { text: 'hpTorus(src(o0),1.0,0.5)', displayText: 'hpTorus' },
+      { text: 'hpCone(src(o0),1.0)', displayText: 'hpCone' },
+      { text: 'hpConeOblique(src(o0),1.0,1.0,1.0,1.0)', displayText: 'hpConeOblique' },
+    ],
+
+    // Fonctions FCS - explicit curves
+    explicitCurves: [
+      { text: 'eCircle(1.0,1.0)', displayText: 'eCircle' },
+      { text: 'eBicorn(1.0)', displayText: 'eBicorn' },
+      { text: 'eCatenary(1.0)', displayText: 'eCatenary' },
+      { text: 'eCissoid(1.0,2.0)', displayText: 'eCissoid' },
+      { text: 'eLame(2.0,2.5,3.0,2.0)', displayText: 'eLame' },
+      { text: 'eNewton(2.0,0.4,1.0,0.8)', displayText: 'eNewton' },
+      { text: 'ePearl(2.0,1.0,1.0,1.0,1.0,1.0)', displayText: 'ePearl' },
+      { text: 'ePear(2.0,2.0,9.0)', displayText: 'ePear' },
+      { text: 'eStrophoid(2.0,5.0)', displayText: 'eStrophoid' },
+      { text: 'eTrisectrix(2.0,1.0)', displayText: 'eTrisectrix' },
+    ],
+
     noise: [
       // lib-noise sources
       { text: 'whitenoise(10.0,0.0)', displayText: 'whitenoise' },
@@ -73,7 +165,7 @@ export const hydraAutocomplete = {
       { text: 's0.initScreen()', displayText: 'SrcScreen' },
     ],
 
-    // Transformations (modificateurs)
+    // Transformations
     transformations: [
       { text: 'add()', displayText: 'add' },
       { text: 'sub()', displayText: 'sub' },
@@ -147,6 +239,22 @@ export const hydraAutocomplete = {
       { text: 'coldot(1.0)', displayText: 'coldot' },
       { text: 'colboost(1.0)', displayText: 'colboost' },
       { text: 'colreflect(1.0)', displayText: 'colreflect' },
+
+      
+    ],
+
+    // Databending and glitch effects
+    databending: [
+      { text: 'databend(0.5,0.1,0.3)', displayText: 'databend' },
+      { text: 'rgbshift(1.0,0.05,0.2)', displayText: 'rgbshift' },
+      { text: 'pixelcorrupt(1.0,16.0,0.4)', displayText: 'pixelcorrupt' },
+      { text: 'compress(1.0,8.0,0.3)', displayText: 'compress' },
+
+      // Data bending and glitch effects
+      { text: 'glitchcoord(0.1,10.0,0.5)', displayText: 'glitchcoord' },
+      { text: 'pixelsort(0.2,0.5,0.0)', displayText: 'pixelsort' },
+      { text: 'memcorrupt(0.15,32.0,0.3)', displayText: 'memcorrupt' },
+      { text: 'interlace(0.1,200.0,0.05)', displayText: 'interlace' },
     ],
 
      // Screen Space Shaders
@@ -177,6 +285,7 @@ export const hydraAutocomplete = {
       { text: 'mirrorX2(0,1)', displayText: 'mirrorX2' },
       { text: 'mirrorY2(0,1)', displayText: 'mirrorY2' },
       { text: 'mirrorWrap()', displayText: 'mirrorWrap' },
+      { text: 'polar(1.0, 1.0, 0.5, 0.5)', displayText: 'polar' },
       
       // Other fractal functions
       { text: 'inversion()', displayText: 'inversion' },
@@ -199,9 +308,10 @@ export const hydraAutocomplete = {
     // Math functions and constants
     mathFunctions: [
       { text: '()=>Math.sin(time)', displayText: 'time' },
-      { text: '()=>sinrange(time, 0,1,1)', displayText: 'sinrange' },
-      { text: '()=>cosrange(time, 0,1)', displayText: 'cosrange' },
-      { text: '()=>sinrange(time, 0,1)', displayText: 'tanrange' },
+      { text: '()=>sinrange(time, 0,1,1,1)', displayText: 'sinrange' },
+      { text: '()=>cosrange(time, 0,1,1)', displayText: 'cosrange' },
+      { text: '()=>sinrange(time, 0,1,1)', displayText: 'tanrange' },
+      { text: '()=>sawrange(time, 0,1,1)', displayText: 'sawrange' },
       { text: '()=>mouse.x', displayText: 'mouse.x' },
       { text: '()=>mouse.y', displayText: 'mouse.y' },
       { text: '()=>a.fft[0]', displayText: 'a0' },
@@ -213,7 +323,9 @@ export const hydraAutocomplete = {
       { text: 'Math.tan()', displayText: 'tan' },
       { text: 'saw()', displayText: 'saw' },
       { text: '()=>sawt()', displayText: 'sawt' },
+      { text: '()=>bouncet(time, 3, 1, 8)', displayText: 'bouncet' },
       { text: 'Math.random()', displayText: 'random' },
+      { text: 'rand(0,1)', displayText: 'rand' },
       { text: 'Math.PI', displayText: 'Math.PI' },
       { text: 'Math.abs()', displayText: 'abs' },
       { text: 'Math.floor()', displayText: 'floor' },
@@ -224,6 +336,17 @@ export const hydraAutocomplete = {
       { text: 'screenRatio', displayText: 'sr' },
     ],
 
+    space : [
+      { text: 'invtile(0.5)', displayText: 'invtile' },
+      { text: 'invsqrt(0.5)', displayText: 'invsqrt' },
+      { text: 'abslog(1.0)', displayText: 'abslog' },
+      { text: 'swave(1.0)', displayText: 'swave' },
+      { text: 'centermag(0.4,0.2,0,0)', displayText: 'centermag' },
+
+      
+
+    ],
+
     arrayMethods: [
       { text: 'smooth()', displayText: 'smooth' },
       { text: 'fast(1)', displayText: 'fast' },
@@ -231,26 +354,69 @@ export const hydraAutocomplete = {
       { text: 'offset(0)', displayText: 'offset' },
       { text: 'fit(0,1)', displayText: 'fit' },
     ],
-    
-    // Separators for better organization
-    createSeparator: function(text) {
+
+    _currentView: 'categories',
+    _currentCategory: null,
+    _completionWidget: null,
+
+    categories: {
+        "🔥 Sources": { items: "sources", blankOnly: true },
+        "🌊 Noise Functions": { items: "noise", blankOnly: true },
+        "🎨 Art Patterns": { items: "art", blankOnly: true },
+        "✨ Soft Patterns": { items: "pattern", blankOnly: true },
+        "🔷 Antlia Shapes": { items: "antliaShapes", blankOnly: true },
+        "📐 Implicit Curves FCS": { items: "implicitCurves", blankOnly: true },
+        "🌐 Parametric Surfaces FCS": { items: "parametricSurfaces", blankOnly: true },
+        "🔵 Implicit Surfaces FCS": { items: "implicitSurfaces", blankOnly: false },
+        "🔴 Inverse Parametric Surfaces FCS": { items: "inverseParametricSurfaces", blankOnly: false },
+        "🟢 Parametric Curves FCS": { items: "parametricCurves", blankOnly: false },
+        "🟣 Explicit Curves FCS": { items: "explicitCurves", blankOnly: false },
+        "🔶 Parametric Hypersurfaces FCS": { items: "parametricHypersurfaces", blankOnly: false },
+        "📺 Init Sources": { items: "initSources", blankOnly: true },
+        "🔄 Transformations": { items: "transformations", blankOnly: false },
+        "⚡ Effects": { items: "effects", blankOnly: false },
+        "🌌 Space Effects": { items: "space", blankOnly: false },
+        "🌈 Color Effects": { items: "colorEffects", blankOnly: false },
+        "💾 DataBending": { items: "databending", blankOnly: false },
+        "🌁 Screen Space Shaders": { items: "screenSpaceShaders", blankOnly: false },
+        "🪞 Fractal Effects": { items: "fractalEffects", blankOnly: false },
+        "🧮 Math & Audio": { items: "mathFunctions", blankOnly: false },
+        "🛠️ Utilities": { items: "utilities", blankOnly: true }
+    },
+
+    // create separator for categories
+    createCategorySeparator: function(text, categoryKey) {
         return {
-            text: "", 
-            displayText: text,
-            className: "autocomplete-separator",
+            text: "",
+            displayText: text + " →",
+            className: "autocomplete-category-separator",
+            categoryKey: categoryKey,
             render: function(element, self, data) {
-                element.className += " autocomplete-separator";
-                element.innerHTML = `<span class="separator-text">${data.displayText}</span>`;
-                element.style.pointerEvents = 'none';
-                element.style.cursor = 'default';
-                element.setAttribute('data-separator', 'true');
-                element.setAttribute('aria-disabled', 'true');
+                element.className += " autocomplete-category-separator";
+                element.innerHTML = `<span class="category-text">${data.displayText}</span>`;
+                element.style.cursor = 'pointer';
+                element.setAttribute('data-category', data.categoryKey);
             },
-            hint: function() {
+            hint: function(cm, self, data) {
                 return false;
+            }
+        };
+    },
+
+    // create back button for categories
+    createBackButton: function() {
+        return {
+            text: "",
+            displayText: "← Retour aux catégories",
+            className: "autocomplete-back-button",
+            render: function(element, self, data) {
+                element.className += " autocomplete-back-button";
+                element.innerHTML = `<span class="back-text">${data.displayText}</span>`;
+                element.style.cursor = 'pointer';
             },
-            disabled: true,
-            separator: true
+            hint: function(cm, self, data) {
+                return false;
+            }
         };
     },
 
@@ -261,130 +427,225 @@ export const hydraAutocomplete = {
         const token = cm.getTokenAt(cursor);
         const cursorPosition = cursor.ch;
         
-        const allSuggestions = [
-            this.createSeparator("🔥 Sources"),
-            ...this.sources,
-            this.createSeparator("🌊 Noise Functions"),
-            ...this.noise,
-            this.createSeparator("🎨 Art Patterns"),
-            ...this.art,
-            this.createSeparator("✨ Soft Patterns"),
-            ...this.pattern,
-            this.createSeparator("🔷 Antlia Shapes"),
-            ...this.antliaShapes,
-            this.createSeparator("📺 Init Sources"),
-            ...this.initSources,
-            this.createSeparator("🔄 Transformations"),
-            ...this.transformations,
-            this.createSeparator("⚡ Effects"),
-            ...this.effects,
-            this.createSeparator("🌈 Color Effects"),
-            ...this.colorEffects,
-            this.createSeparator("🌁 Screen Space Shaders"),
-            ...this.screenSpaceShaders,
-            this.createSeparator("🪞 Fractal Effects"),
-            ...this.fractalEffects,
-            this.createSeparator("🛠️ Utilities"),
-            ...this.utilities,
-            this.createSeparator("🧮 Math & Audio"),
-            ...this.mathFunctions
-        ];
+        // Reset view state for new hints
+        this._currentView = 'categories';
+        this._currentCategory = null;
+        
+        // if we are into parenthese (simple detection)
+        const openParens = (beforeCursor.match(/\(/g) || []).length;
+        const closeParens = (beforeCursor.match(/\)/g) || []).length;
+        const isInParentheses = openParens > closeParens;
+        
+        // Array methods
+        if (/\]\s*\.\s*[\w*]*$/.test(beforeCursor)) {
+            const prefix = beforeCursor.split('.').pop() || '';
+            const dotIndex = beforeCursor.lastIndexOf('.');
+            const suggestions = this.filterWithWildcards(this.arrayMethods, prefix);
+            return {
+                list: suggestions,
+                from: CodeMirror.Pos(cursor.line, dotIndex + 1),
+                to: CodeMirror.Pos(cursor.line, cursor.ch)
+            };
+        }
 
-        const blankSuggestions = [
-            this.createSeparator("🔥 Sources"),
-            ...this.sources,
-            this.createSeparator("🌊 Noise Functions"),
-            ...this.noise,
-            this.createSeparator("🎨 Art Patterns"),
-            ...this.art,
-            this.createSeparator("✨ Soft Patterns"),
-            ...this.pattern,
-            this.createSeparator("🔷 Antlia Shapes"),
-            ...this.antliaShapes,
-            this.createSeparator("📺 Init Sources"),
-            ...this.initSources,
-            this.createSeparator("🛠️ Utilities"),
-            ...this.utilities,
-        ];
+        // If the cursor is inside parentheses show all suggestions
+        if (isInParentheses) {
+            // Organiser toutes les suggestions par catégories avec séparateurs
+            const allSuggestions = [];
+            Object.keys(this.categories).forEach(categoryName => {
+                const categoryInfo = this.categories[categoryName];
+                const categoryItems = this[categoryInfo.items];
+                if (categoryItems && categoryItems.length > 0) {
+                    allSuggestions.push(this.createCategorySeparator(categoryName, categoryName));
+                    allSuggestions.push(...categoryItems);
+                }
+            });
+            
+            // Find the current word before the cursor
+            const wordMatch = beforeCursor.match(/([\w*]*)$/);
+            const currentWord = wordMatch ? wordMatch[1] : '';
+            const wordStart = cursor.ch - currentWord.length;
+            
+            const filteredSuggestions = this.filterWithWildcards(allSuggestions, currentWord);
+            
+            return {
+                list: filteredSuggestions,
+                from: CodeMirror.Pos(cursor.line, wordStart),
+                to: CodeMirror.Pos(cursor.line, cursor.ch)
+            };
+        }
+        
+        
       
+        // Transformations and effects after a dot
+        if (/\.\s*[\w*]*$/.test(beforeCursor)) {
+            const prefix = beforeCursor.split('.').pop() || '';
+            const dotIndex = beforeCursor.lastIndexOf('.');
+            
+            // if there is no prefix, show categories
+            if (prefix === '') {
+                const categorySuggestions = [];
+                Object.keys(this.categories).forEach(categoryName => {
+                    const categoryInfo = this.categories[categoryName];
+                    if (!categoryInfo.blankOnly) { // For the effects/transformations
+                        const separator = this.createCategorySeparator(categoryName, categoryName);
+                        categorySuggestions.push(separator);
+                    }
+                });
+                
+                return {
+                    list: categorySuggestions,
+                    from: CodeMirror.Pos(cursor.line, dotIndex + 1),
+                    to: CodeMirror.Pos(cursor.line, cursor.ch)
+                };
+            }
+            
+            // if there is a prefix, filter the effects and transformations with wildcards
+            const allEffects = [
+                ...this.transformations,
+                ...this.effects,
+                ...this.colorEffects,
+                ...this.fractalEffects,
+                ...this.screenSpaceShaders,
+                ...this.space,
+                ...this.parametricCurves,
+                ...this.implicitSurfaces,
+                ...this.inverseParametricSurfaces,
+                ...this.parametricHypersurfaces,
+                ...this.explicitCurves,
+                ...this.databending
+            ];
+            
+            const filteredEffects = this.filterWithWildcards(allEffects, prefix);
+            
+            return {
+                list: filteredEffects,
+                from: CodeMirror.Pos(cursor.line, dotIndex + 1),
+                to: CodeMirror.Pos(cursor.line, cursor.ch)
+            };
+        }
+      
+        // for an empty line or when the user hasn't typed anything yet
         if (beforeCursor.trim() === '') {
-            const suggestions = blankSuggestions.filter(item => {
-                if (item.className === "autocomplete-separator") return true;
-                return item.displayText.includes(token.string);
+            const categorySuggestions = [];
+            
+            Object.keys(this.categories).forEach(categoryName => {
+                const categoryInfo = this.categories[categoryName];
+                if (categoryInfo.blankOnly) {
+                    const separator = this.createCategorySeparator(categoryName, categoryName);
+                    categorySuggestions.push(separator);
+                }
             });
             
             return {
-                list: suggestions,
-                from: CodeMirror.Pos(cursor.line, beforeCursor.lastIndexOf('(') + 1),
+                list: categorySuggestions,
+                from: CodeMirror.Pos(cursor.line, cursor.ch),
                 to: CodeMirror.Pos(cursor.line, cursor.ch)
             };
         }
-      
-        // Array methods
-        if (/\]\s*\.\s*\w*$/.test(beforeCursor)) {
-            const prefix = token.string.slice(0, cursorPosition - token.start).replace(/[^a-zA-Z]/g, "");
-            const dotIndex = beforeCursor.lastIndexOf('.');
-            const suggestions = [
-                this.createSeparator("🔗 Array Methods"),
-                ...this.arrayMethods.filter(item => item.displayText.includes(prefix))
-            ];
-            return {
-                list: suggestions,
-                from: CodeMirror.Pos(cursor.line, dotIndex + 1),
-                to: CodeMirror.Pos(cursor.line, cursor.ch)
-            };
-        }
-      
-        // Transformations and effects after a dot
-        if (/\.\s*\w*$/.test(beforeCursor)) {
-            const prefix = token.string.slice(0, cursorPosition - token.start).replace(/[^a-zA-Z]/g, "");
-            const dotIndex = beforeCursor.lastIndexOf('.');
-            
-            const transformSuggestions = this.transformations.filter(item => item.displayText.includes(prefix));
-            const effectSuggestions = this.effects.filter(item => item.displayText.includes(prefix));
-            const colorEffectSuggestions = this.colorEffects.filter(item => item.displayText.includes(prefix));
-            const fractalEffectSuggestions = this.fractalEffects.filter(item => item.displayText.includes(prefix));
-            const screenSpaceSuggestions = this.screenSpaceShaders.filter(item => item.displayText.includes(prefix));
-
-            const suggestions = [];
-            if (transformSuggestions.length > 0) {
-                suggestions.push(this.createSeparator("🔄 Transformations"));
-                suggestions.push(...transformSuggestions);
-            }
-            if (effectSuggestions.length > 0) {
-                suggestions.push(this.createSeparator("⚡ Effects"));
-                suggestions.push(...effectSuggestions);
-            }
-            if (colorEffectSuggestions.length > 0) {
-                suggestions.push(this.createSeparator("🌈 Color Effects"));
-                suggestions.push(...colorEffectSuggestions);
-            }
-            if (fractalEffectSuggestions.length > 0) {
-                suggestions.push(this.createSeparator("🪞 Fractal Effects"));
-                suggestions.push(...fractalEffectSuggestions);
-            }
-            if (screenSpaceSuggestions.length > 0) {
-                suggestions.push(this.createSeparator("🌁 Screen Space Shaders"));
-                suggestions.push(...screenSpaceSuggestions);
-            }
-            
-            return {
-                list: suggestions,
-                from: CodeMirror.Pos(cursor.line, dotIndex + 1),
-                to: CodeMirror.Pos(cursor.line, cursor.ch)
-            };
-        }
-      
-        const prefix = token.string.slice(0, cursorPosition - token.start).replace(/[^a-zA-Z]/g, "");
-        const suggestions = (prefix !== '') ? allSuggestions.filter(item => {
-            // if (item.className === "autocomplete-separator") return true;
-            return item.displayText.includes(prefix);
-        }) : allSuggestions;
         
+        // show the filtered suggestions based on the current word
+        let prefix = '';
+        let startPos = cursor.ch;
+        
+        const wordStart = line.lastIndexOf(' ', cursor.ch - 1) + 1;
+        const wordEnd = cursor.ch;
+        prefix = line.slice(wordStart, wordEnd);
+        
+        // complete list of all suggestions organized by categories
+        const allSuggestions = [];
+        Object.keys(this.categories).forEach(categoryName => {
+            const categoryInfo = this.categories[categoryName];
+            const categoryItems = this[categoryInfo.items];
+            if (categoryItems && categoryItems.length > 0) {
+                allSuggestions.push(this.createCategorySeparator(categoryName, categoryName));
+                allSuggestions.push(...categoryItems);
+            }
+        });
+        
+        // filter prefix with wildcards
+        const filteredSuggestions = this.filterWithWildcards(allSuggestions, prefix);
+
         return {
-          list: suggestions,
-          from: CodeMirror.Pos(cursor.line, cursor.ch - prefix.length),
-          to: CodeMirror.Pos(cursor.line, cursor.ch)
+            list: filteredSuggestions,
+            from: CodeMirror.Pos(cursor.line, wordStart),
+            to: CodeMirror.Pos(cursor.line, cursor.ch)
+        };
+    },
+
+    // Fonction for filtering suggestions with wildcards
+    filterWithWildcards: function(suggestions, pattern) {
+        if (!pattern || pattern === '') {
+            return suggestions;
+        }
+
+        // if no wildcards, use simple contains
+        if (!pattern.includes('*')) {
+            return suggestions.filter(item => 
+                item.displayText.toLowerCase().includes(pattern.toLowerCase())
+            );
+        }
+
+        // wildcard regex
+        const regex = this.createWildcardRegex(pattern);
+        
+        return suggestions.filter(item => 
+            regex.test(item.displayText.toLowerCase())
+        );
+    },
+
+    // wildcard regex creation
+    createWildcardRegex: function(pattern) {
+        if (!pattern) return /^$/;
+        
+        const lowerPattern = pattern.toLowerCase().trim();
+        if (!lowerPattern) return /^$/;
+        
+        const escapedPattern = lowerPattern.replace(/[.+?^${}()|[\]\\]/g, '\\$&');
+        
+        let regexPattern;
+        
+        if (lowerPattern.startsWith('*') && lowerPattern.endsWith('*') && lowerPattern.length > 2) {
+            const middle = escapedPattern.slice(1, -1);
+            regexPattern = `.*${middle}.*`;
+        } else if (lowerPattern.startsWith('*') && lowerPattern.length > 1) {
+            const suffix = escapedPattern.slice(1);
+            regexPattern = `.*${suffix}$`;
+        } else if (lowerPattern.endsWith('*') && lowerPattern.length > 1) {
+            const prefix = escapedPattern.slice(0, -1);
+            regexPattern = `^${prefix}.*`;
+        } else if (lowerPattern.includes('*')) {
+            regexPattern = escapedPattern.replace(/\*/g, '.*');
+        } else {
+            regexPattern = `.*${escapedPattern}.*`;
+        }
+        
+        try {
+            return new RegExp(regexPattern, 'i');
+        } catch (e) {
+            return /.*/ ;
+        }
+    },
+
+    // show elements of a category
+    showCategoryItems: function(cm, categoryKey) {
+        const categoryInfo = this.categories[categoryKey];
+        if (!categoryInfo || !this[categoryInfo.items]) {
+            return null;
+        }
+
+        const items = [
+            this.createBackButton(),
+            ...this[categoryInfo.items]
+        ];
+
+        this._currentView = 'items';
+        this._currentCategory = categoryKey;
+
+        return {
+            list: items,
+            from: cm.getCursor(),
+            to: cm.getCursor()
         };
     }
 };

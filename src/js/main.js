@@ -16,6 +16,7 @@ import 'codemirror/addon/comment/comment'
 import 'codemirror/addon/hint/show-hint'
 import 'codemirror/keymap/vim'
 import 'codemirror/addon/selection/active-line.js'
+import 'codemirror/addon/selection/mark-selection'; 
 import 'codemirror/addon/scroll/annotatescrollbar.js'
 import 'codemirror/addon/search/searchcursor.js'
 import 'codemirror/addon/search/search.js'
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Configuration de CodeMirror
   const editor = CodeMirror(document.getElementById('editor'), {
     mode: 'python',
-    theme: 'material-darker',
+    theme: 'cobalt',
     lineNumbers: true,
     autofocus: true,
     matchBrackets: true,
@@ -102,6 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     //cursorScrollMargin: 50,
     fixedGutter: false,
     singleCursorHeightPerLine: false,
+    styleSelectedText: true,
     styleActiveLine: true,
     foldGutter: true,
     gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
@@ -370,6 +372,48 @@ document.addEventListener('DOMContentLoaded', async () => {
         return hydraAutocomplete.hint(cm, CodeMirror);
       } else {
         return foxdotAutocomplete.hint(cm, CodeMirror);
+      }
+    },
+    completeSingle: hydra ? false : true,
+    extraKeys: {
+      'Right': function(cm, handle) {
+        // Si on est sur une catégorie, montrer ses éléments
+        const activeElement = document.querySelector('.CodeMirror-hint-active');
+        if (activeElement) {
+          const categoryAttr = activeElement.getAttribute('data-category');
+          
+          if (categoryAttr) {
+            const categoryItems = hydraAutocomplete.showCategoryItems(cm, categoryAttr);
+            if (categoryItems) {
+              handle.close();
+              setTimeout(() => {
+                cm.showHint({
+                  hint: () => categoryItems,
+                  completeSingle: false,
+                  extraKeys: {
+                    'Left': function(cm, handle) {
+                      // Retour aux catégories
+                      handle.close();
+                      setTimeout(() => {
+                        cm.showHint();
+                      }, 50);
+                    }
+                  }
+                });
+              }, 50);
+            }
+          }
+        }
+      },
+      'Left': function(cm, handle) {
+        // Si on est dans les éléments et que le premier élément (bouton retour) est sélectionné
+        const selectedItem = handle.data[handle.selectedHint];
+        if (selectedItem && selectedItem.displayText && selectedItem.displayText.includes('Retour aux catégories')) {
+          handle.close();
+          setTimeout(() => {
+            cm.showHint();
+          }, 50);
+        }
       }
     }
   });

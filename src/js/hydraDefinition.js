@@ -32,7 +32,33 @@ const sources = {
   concentric2: 'concentric2(base, octaves, ampscale, speed)\nHarmonic concentric rings pattern.\nbase: float (default: 5.0)\noctaves: float (default: 2.0)\nampscale: float (default: 0.5)\nspeed: float (default: 1.0)',
   phasenoise: 'phasenoise(base, range, scale, speed, phase)\nNoise in HSV with phase shifting.\nbase: float (default: 0.0)\nrange: float (default: 0.1)\nscale: float (default: 5.0)\nspeed: float (default: 0.5)\nphase: float (default: 0.03)',
   sdfmove: 'sdfmove(speed1, speed2, speed3)\nMoving ramp pattern.\nspeed1: float (default: 0.73)\nspeed2: float (default: 1.0)\nspeed3: float (default: -0.5)',
-  smoothsun: 'smoothsun(threshold, border, speed, ampscale)\nSmooth sun pattern.\nthreshold: float (default: 0.3)\nborder: float (default: 0.2)\nspeed: float (default: 1.0)\nampscale: float (default: 0.5)'
+  smoothsun: 'smoothsun(threshold, border, speed, ampscale)\nSmooth sun pattern.\nthreshold: float (default: 0.3)\nborder: float (default: 0.2)\nspeed: float (default: 1.0)\nampscale: float (default: 0.5)',
+
+  // Implicit Curves
+  iCardioid: 'iCardioid(freq, a)\nCardioid implicit curve.\nfreq: animation frequency (default: 1.0)\na: shape parameter (default: 1.0)',
+  iBicorn: 'iBicorn(freq, a_exp, a)\nBicorn implicit curve.\nfreq: animation frequency (default: 1.0)\na_exp: exponent parameter (default: 1.0)\na: shape parameter (default: 1.0)',
+  iAstroid: 'iAstroid(freq, wrap, amp)\nAstroid implicit curve.\nfreq: animation frequency (default: 1.0)\nwrap: wrap parameter (default: 1.0)\namp: amplitude (default: 1.0)',
+  iCircle: 'iCircle(freq)\nCircle implicit curve.\nfreq: animation frequency (default: 1.0)',
+  iCassOval: 'iCassOval(freq, mult, a, c)\nCassini oval implicit curve.\nfreq: animation frequency (default: 1.0)\nmult: multiplier (default: 1.0)\na: shape parameter (default: 1.0)\nc: constant (default: 1.0)',
+  iSextic: 'iSextic(freq1, freq2, a)\nSextic curve.\nfreq1: first frequency (default: 1.0)\nfreq2: second frequency (default: 1.0)\na: shape parameter (default: 1.0)',
+  iCochleoid: 'iCochleoid(freq1, freq2, a)\nCochleoid curve.\nfreq1: first frequency (default: 1.0)\nfreq2: second frequency (default: 1.0)\na: shape parameter (default: 1.0)',
+  iCissoid: 'iCissoid(freq, a, wrap)\nCissoid curve.\nfreq: animation frequency (default: 1.0)\na: shape parameter (default: 1.0)\nwrap: wrap parameter (default: 10.0)',
+  iSluzeConchoid: 'iSluzeConchoid(freq, a, k)\nConchoid of de Sluze.\nfreq: animation frequency (default: 1.0)\na: shape parameter (default: 3.0)\nk: constant (default: 1.0)',
+  iDevil: 'iDevil(freq, wrap, k, a)\nDevil curve.\nfreq: animation frequency (default: 1.0)\nwrap: wrap parameter (default: 4.0)\nk: shape parameter (default: 1.0)\na: scale parameter (default: 3.0)',
+  iDFolium: 'iDFolium(freq, a)\nDescartes folium.\nfreq: animation frequency (default: 1.0)\na: shape parameter (default: 3.0)',
+  iSpiral: 'iSpiral(freq, a, b)\nSpiral curve.\nfreq: animation frequency (default: 1.0)\na: spiral parameter (default: 3.0)\nb: decay parameter (default: 1.0)',
+  iFermatSpiral: 'iFermatSpiral(freq, a, b)\nFermat spiral.\nfreq: animation frequency (default: 1.0)\na: scale parameter (default: 1.0)\nb: spiral parameter (default: 1.0)',
+  iFreethNephroid: 'iFreethNephroid(freq1, freq2, a)\nFreeth nephroid.\nfreq1: first frequency (default: 1.0)\nfreq2: second frequency (default: 1.0)\na: scale parameter (default: 2.0)',
+  iInvoluteCircle: 'iInvoluteCircle(freq, wrap)\nInvolute of circle.\nfreq: animation frequency (default: 1.0)\nwrap: wrap parameter (default: 10.0)',
+
+  // Parametric Surfaces
+  pSphere: 'pSphere(freq, a)\nParametric sphere.\nfreq: animation frequency (default: 1.0)\na: radius (default: 1.0)',
+  pMobiusStrip: 'pMobiusStrip(freq, a)\nMobius strip.\nfreq: animation frequency (default: 1.0)\na: width parameter (default: 1.0)',
+  pCylinder: 'pCylinder(freq, a)\nParametric cylinder.\nfreq: animation frequency (default: 1.0)\na: radius (default: 1.0)',
+  pKleinBottle: 'pKleinBottle(freq, aa)\nKlein bottle.\nfreq: animation frequency (default: 1.0)\naa: shape parameter (default: 1.0)',
+  pCrossCap: 'pCrossCap(freq, aa)\nCross cap surface.\nfreq: animation frequency (default: 1.0)\naa: scale parameter (default: 1.0)',
+  pSteiner: 'pSteiner(freq, aa)\nSteiner surface.\nfreq: animation frequency (default: 1.0)\naa: scale parameter (default: 1.0)',
+  pTorus: 'pTorus(freq, a, c)\nParametric torus.\nfreq: animation frequency (default: 1.0)\na: tube radius (default: 1.0)\nc: torus radius (default: 0.5)'
 };
 
 const initSources = {
@@ -118,6 +144,8 @@ const mathFunctions = {
   sawt: 'Math.sawt(amp=3, freq=1)\nGenerates sawtooth wave with time. \nx: time or value',
   random: 'Math.random()\nGenerates random number between 0 and 1',
   'Math.PI': 'Math.PI\nConstant π (3.14159...)',
+  rand: 'rand(min, max)\nGenerates random number between min and max. \nmin: minimum value (default: 0) \nmax: maximum value (default: 1)',
+  bouncet: 'bouncet(t, amp=3, freq=1, bouncing=8)\nGenerates bouncing effect. \nt: time or value \namp: amplitude (default: 3) \nfreq: frequency (default: 1) \nbouncing: number of bounces (default: 8)',
   screenRatio: 'screenRatio\nAspect ratio of the screen (height/width)',
 };
 
@@ -141,6 +169,11 @@ const colorEffects = {
   coldot: 'coldot(amount)\nApplies RGB dot product of rotated channels. \namount: effect intensity (default: 1.0)',
   colboost: 'colboost(amount)\nBoosts colors using vector operations. \namount: boost intensity (default: 1.0)',
   colreflect: 'colreflect(amount)\nCreates color reflection effect. \namount: reflection intensity (default: 1.0)',
+  // Databending effects
+  databend: 'databend(amount, shift, corruption)\nSimulates digital data corruption with bit shifting. \namount: corruption intensity (default: 0.5) \nshift: channel shift amount (default: 0.1) \ncorruption: digital noise level (default: 0.3)',
+  rgbshift: 'rgbshift(amount, offset, chaos)\nSeparates and corrupts RGB channels. \namount: effect intensity (default: 1.0) \noffset: channel separation (default: 0.05) \nchaos: corruption chaos level (default: 0.2)',
+  pixelcorrupt: 'pixelcorrupt(amount, blocksize, corruption)\nCorrupts pixels in blocks with various digital artifacts. \namount: effect intensity (default: 1.0) \nblocksize: corruption block size (default: 16.0) \ncorruption: corruption probability (default: 0.4)',
+  compress: 'compress(amount, quality, blockiness)\nSimulates JPEG-like compression artifacts. \namount: effect intensity (default: 1.0) \nquality: compression quality levels (default: 8.0) \nblockiness: blocking artifact intensity (default: 0.3)',
 };
 
 const screenSpaceShaders = {
@@ -169,9 +202,17 @@ const fractalEffects = {
   mirrorX2: 'mirrorX2(pos, coverage)\nMirrors image horizontally from other side. \npos: mirror position (default: 0) \ncoverage: effect coverage (default: 1) \nResult: [8765|5678]',
   mirrorY2: 'mirrorY2(pos, coverage)\nMirrors image vertically from other side. \npos: mirror position (default: 0) \ncoverage: effect coverage (default: 1) \nSame as mirrorX2 but on Y axis',
   mirrorWrap: 'mirrorWrap()\nMirrors any out of bounds coordinates. \nInput: [-8,-7,-6,-5,-4,-3,-2,-1] [1,2,3,4,5,6,7,8] [9,10,11,12,13,14,15,16] \nResult: [87654321] [12345678] [87654321]',
+  // Polar transformation
+  polar: 'polar(radius, angle, centerX, centerY)\nApplies polar transformation. \nradius: radius multiplier (default: 1.0) \nangle: angle multiplier (default: 1.0) \ncenterX: horizontal center (default: 0.5) \ncenterY: vertical center (default: 0.5)',
   
   // Other fractal functions
   inversion: 'inversion()\nApplies circular inversion transformation. \nUseful for creating fractal-like patterns.',
+
+  // Databending effects
+  glitchcoord: 'glitchcoord(amount, frequency, chaos)\nApplies digital glitch distortions to coordinates. \namount: distortion strength (default: 0.1) \nfrequency: scanline frequency (default: 10.0) \nchaos: chaos factor (default: 0.5)',
+  pixelsort: 'pixelsort(amount, threshold, direction)\nApplies pixel sorting effect to coordinates. \namount: sorting displacement (default: 0.2) \nthreshold: sorting trigger threshold (default: 0.5) \ndirection: sort direction 0=horizontal, 1=vertical (default: 0.0)',
+  memcorrupt: 'memcorrupt(amount, blocksize, corruption)\nSimulates memory corruption on coordinate space. \namount: corruption strength (default: 0.15) \nblocksize: memory block size (default: 32.0) \ncorruption: corruption probability (default: 0.3)',
+  interlace: 'interlace(amount, lines, drift)\nApplies interlace corruption effect. \namount: effect strength (default: 0.1) \nlines: number of scanlines (default: 200.0) \ndrift: horizontal drift amount (default: 0.05)',
 };
 
 const antliaShapes = {
@@ -199,6 +240,62 @@ const antliaShapes = {
   grid: 'grid(x, y, b, smooth)\nCreates a grid pattern.\nx: horizontal divisions (default: 8)\ny: vertical divisions (default: 4)\nb: border thickness (default: 0.05)\nsmooth: edge smoothing (default: 0.001)',
 };
 
+const parametricCurves = {
+  pAstroid: 'pAstroid(texture,a)\nParametric astroid curve.\na: scale parameter (default: 1.0)',
+  pSpiral: 'pSpiral(texture,)\nParametric spiral curve.',
+  pCardioid: 'pCardioid(texture,a, p)\nParametric cardioid curve.\na: scale parameter (default: 1.0)\np: parameter (default: 2.0)',
+  pConchoid: 'pConchoid(texture,a)\nParametric conchoid curve.\na: shape parameter (default: 1.0)',
+  pEpicycloid: 'pEpicycloid(texture,a, b)\nParametric epicycloid curve.\na: radius parameter (default: 1.0)\nb: radius parameter (default: 1.0)',
+  pDescartesFolium: 'pDescartesFolium(texture,a, b)\nParametric Descartes folium.\na: scale parameter (default: 1.0)\nb: shape parameter (default: 1.0)',
+  pHypocycloid: 'pHypocycloid(texture,a, b)\nParametric hypocycloid curve.\na: radius parameter (default: 1.0)\nb: frequency parameter (default: 2.0)',
+  pHypotrochoid: 'pHypotrochoid(texture,a, b, d)\nParametric hypotrochoid curve.\na: radius parameter (default: 1.0)\nb: frequency parameter (default: 2.0)\nd: distance parameter (default: 1.0)',
+  pInvoluteCircle: 'pInvoluteCircle(texture,a)\nParametric involute of circle.\na: radius parameter (default: 1.0)',
+  pCircle: 'pCircle(texture,a)\nParametric circle.\na: radius (default: 1.0)',
+  pLissajous: 'pLissajous(texture,a, n, b, phase)\nParametric Lissajous curve.\na: amplitude parameter (default: 5.0)\nn: frequency parameter (default: 1.0)\nb: amplitude parameter (default: 1.0)\nphase: phase shift (default: 0.0)',
+  pNephroid: 'pNephroid(texture,a)\nParametric nephroid curve.\na: radius parameter (default: 1.0)',
+  pPlateau: 'pPlateau(texture,m, n)\nParametric Plateau curve.\nm: parameter (default: 2.0)\nn: parameter (default: 1.0)',
+  pTalbot: 'pTalbot(texture,a)\nParametric Talbot curve.\na: scale parameter (default: 1.0)',
+};
+
+const implicitSurfaces = {
+  iSphere: 'iSphere()\nImplicit sphere surface.',
+  iCube: 'iCube()\nImplicit cube surface.',
+  iTorus: 'iTorus(c, a)\nImplicit torus surface.\nc: minor radius (default: 0.5)\na: major radius (default: 1.0)',
+  iPlane: 'iPlane(nx, ny, nz)\nImplicit plane surface.\nnx: normal x component (default: 1.0)\nny: normal y component (default: 1.0)\nnz: normal z component (default: 1.0)',
+  iSteiner: 'iSteiner(a)\nImplicit Steiner surface.\na: shape parameter (default: 1.0)',
+  iWineGlass: 'iWineGlass(k)\nImplicit wine glass surface.\nk: shape parameter (default: 3.2)',
+  iGenus2: 'iGenus2()\nImplicit genus-2 surface.',
+};
+
+const inverseParametricSurfaces = {
+  ipSphere: 'ipSphere(texture, a)\nInverse parametric sphere.\na: radius parameter (default: 1.0)',
+  ipTorus: 'ipTorus(texture,a)\nInverse parametric torus.\na: shape parameter (default: 1.0)',
+  ipMobiusStrip: 'ipMobiusStrip(texture)\nInverse parametric Mobius strip.',
+  ipCylinder: 'ipCylinder(texture)\nInverse parametric cylinder.',
+  ipKleinBottle: 'ipKleinBottle(texture)\nInverse parametric Klein bottle.',
+  ipCrossCap: 'ipCrossCap(texture,a)\nInverse parametric cross cap.\na: scale parameter (default: 1.0)',
+};
+
+const parametricHypersurfaces = {
+  hpSphere: 'hpSphere(texture,a)\nParametric hypersphere.\na: radius parameter (default: 1.0)',
+  hpTorus: 'hpTorus(texture,c, a)\nParametric hypertorus.\nc: major radius (default: 1.0)\na: minor radius (default: 0.5)',
+  hpCone: 'hpCone(texture,c)\nParametric hypercone.\nc: shape parameter (default: 1.0)',
+  hpConeOblique: 'hpConeOblique(texture,c, vx, vy, vz)\nParametric oblique hypercone.\nc: shape parameter (default: 1.0)\nvx: direction x (default: 1.0)\nvy: direction y (default: 1.0)\nvz: direction z (default: 1.0)',
+};
+
+const explicitCurves = {
+  eCircle: 'eCircle(freq, a)\nExplicit circle curve.\nfreq: animation frequency (default: 1.0)\na: radius (default: 1.0)',
+  eBicorn: 'eBicorn(freq)\nExplicit bicorn curve.\nfreq: animation frequency (default: 1.0)',
+  eCatenary: 'eCatenary(freq)\nExplicit catenary curve.\nfreq: animation frequency (default: 1.0)',
+  eCissoid: 'eCissoid(freq, a)\nExplicit cissoid curve.\nfreq: animation frequency (default: 1.0)\na: shape parameter (default: 2.0)',
+  eLame: 'eLame(freq, n, a, b)\nExplicit Lamé curve.\nfreq: animation frequency (default: 2.0)\nn: exponent (default: 2.5)\na: scale parameter (default: 3.0)\nb: shape parameter (default: 2.0)',
+  eNewton: 'eNewton(freq, g, a, b)\nExplicit Newton diverging parabola.\nfreq: animation frequency (default: 2.0)\ng: parameter (default: 0.4)\na: scale parameter (default: 1.0)\nb: shape parameter (default: 0.8)',
+  ePearl: 'ePearl(freq, k, a, n, m, p)\nExplicit pearls of Sluze.\nfreq: animation frequency (default: 2.0)\nk: scale parameter (default: 1.0)\na: shape parameter (default: 1.0)\nn: exponent (default: 1.0)\nm: power (default: 1.0)\np: parameter (default: 1.0)',
+  ePear: 'ePear(freq, b, a)\nExplicit pear-shaped quartic.\nfreq: animation frequency (default: 2.0)\nb: scale parameter (default: 2.0)\na: shape parameter (default: 9.0)',
+  eStrophoid: 'eStrophoid(freq, a)\nExplicit strophoid curve.\nfreq: animation frequency (default: 2.0)\na: shape parameter (default: 5.0)',
+  eTrisectrix: 'eTrisectrix(freq, a)\nExplicit trisectrix of Maclaurin.\nfreq: animation frequency (default: 2.0)\na: scale parameter (default: 1.0)',
+};
+
 const definitions = { 
   ...sources, 
   ...initSources, 
@@ -210,7 +307,12 @@ const definitions = {
   ...antliaShapes,  
   ...utilities, 
   ...arrayMethods, 
-  ...mathFunctions 
+  ...mathFunctions,
+  ...parametricCurves,
+  ...implicitSurfaces,
+  ...inverseParametricSurfaces,
+  ...parametricHypersurfaces,
+  ...explicitCurves,
 };
 
 function showHydraDefinition(cm) {

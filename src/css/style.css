@@ -191,7 +191,7 @@ body {
 }
 
 .CodeMirror pre.CodeMirror-line {
-  padding-bottom: 0.8rem;
+  /* padding-bottom: 0.8rem; */
   font-variant-ligatures: none !important;
 }
 
@@ -276,15 +276,15 @@ body {
 }
 
 /* Style pour la sélection */
-.remote-selection {
+/* .remote-selection {
   opacity: 0.3;
-}
+} */
 
 /* Style pour le curseur actif */
-.CodeMirror-cursor {
+/* .CodeMirror-cursor {
   border-left-width: 2px;
   border-left-style: solid;
-}
+} */
 
 .flash-highlight {
   background-color: var(--flash-col) !important;

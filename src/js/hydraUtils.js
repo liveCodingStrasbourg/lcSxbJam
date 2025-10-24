@@ -36,6 +36,7 @@ export const hydraUtils = {
     });
     eval('setResolution(canva.clientWidth, canva.clientHeight)');
     eval('a.show()');
+    window.hydraSynth = this.hydra;
     this.loadHydraExtensions();
 
     // const script = document.createElement('script');
@@ -55,30 +56,36 @@ export const hydraUtils = {
 
   // load Hydra extensions dynamically
   async loadHydraExtensions() {
-      if (this.extensionsLoaded) return;
-      
-      try {
-          console.log('🔄 Loading Hydra extensions...');
-          
-          await import('./hydra_extra_shader.js');
-          console.log('✅ Hydra Extra Shaders loaded');
-          
-          await import('./hydraFractal.js');
-          console.log('✅ Hydra Fractals loaded');
-          
-          await import('./antlia-math.js');
-          console.log('✅ Hydra Antlia Math loaded');
+        if (this.extensionsLoaded) return;
+        
+        try {
+            console.log('🔄 Loading Hydra extensions...');
+            
+            await import('./hydra_extra_shader.js');
+            console.log('✅ Hydra Extra Shaders loaded');
+            
+            await import('./hydraFractal.js');
+            console.log('✅ Hydra Fractals loaded');
+            
+            await import('./antlia-math.js');
+            console.log('✅ Hydra Antlia Math loaded');
 
-          await import('./antlia-shape.js');
-          console.log('✅ Hydra Antlia Shapes loaded');
+            await import('./antlia-shape.js');
+            console.log('✅ Hydra Antlia Shapes loaded');
 
-          this.extensionsLoaded = true;
-          console.log('🎉 All Hydra extensions loaded successfully!');
-                      
-      } catch (error) {
-          console.error('❌ Error loading Hydra extensions:', error);
-      }
-  },
+            await import('./hydraFCS.js');
+            console.log('✅ Hydra FCS loaded');
+
+            await import('./databending.js');
+            console.log('✅ Hydra Databending loaded');
+
+            this.extensionsLoaded = true;
+            console.log('🎉 All Hydra extensions loaded successfully!');
+                        
+        } catch (error) {
+            console.error('❌ Error loading Hydra extensions:', error);
+        }
+    },
 
   toggleHydra: function() {    
     const hydraSwitch = document.getElementById('hydraSwitch');
